@@ -2,13 +2,14 @@ package cz.vvoleman.documentgallery.data.repository
 
 import cz.vvoleman.documentgallery.domain.model.DocumentModel
 import cz.vvoleman.documentgallery.domain.model.FolderModel
+import cz.vvoleman.documentgallery.domain.repository.GetFolderByIdRepository
 import cz.vvoleman.documentgallery.domain.repository.GetFoldersRepository
 import java.time.LocalDateTime
 import kotlin.random.Random
 
 class FolderRepository(
 
-) : GetFoldersRepository {
+) : GetFoldersRepository, GetFolderByIdRepository  {
 
     override suspend fun getFolders(): List<FolderModel> {
         return listOf(
@@ -31,6 +32,10 @@ class FolderRepository(
                 )
             ),
         )
+    }
 
+    override suspend fun getFolderById(id: String): FolderModel {
+        val folders = getFolders()
+        return folders.first { it.id == id }
     }
 }

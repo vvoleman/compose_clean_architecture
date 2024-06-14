@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
     alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -70,6 +71,9 @@ dependencies {
     implementation(project(":base"))
     implementation(libs.hilt.navigation.compose)
     kapt(libs.hilt.compiler)
+
+    implementation(libs.composeDestination.core)
+    ksp(libs.composeDestination.ksp)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

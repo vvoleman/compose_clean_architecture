@@ -1,6 +1,7 @@
 package cz.vvoleman.documentgallery.di
 
 import cz.vvoleman.documentgallery.data.repository.FolderRepository
+import cz.vvoleman.documentgallery.domain.repository.GetFolderByIdRepository
 import cz.vvoleman.documentgallery.domain.repository.GetFoldersRepository
 import dagger.Module
 import dagger.Provides
@@ -18,5 +19,10 @@ class DataModule {
     fun providesGetFoldersRepository(
         folderRepository: FolderRepository
     ): GetFoldersRepository = folderRepository
+
+    @Provides
+    fun providesGetFolderByIdRepository(
+        folderRepository: FolderRepository
+    ): GetFolderByIdRepository = folderRepository
 
 }
